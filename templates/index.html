@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voice Reader App</title>
+  </head>
+  <body>
+    <h1>Voice Reader App</h1>
+
+    <form action="/generate" method="POST">
+      <label for="input_text">Enter Text:</label>
+      <input type="text" id="input_text" name="input_text" required />
+      <button type="submit">Generate Audio</button>
+    </form>
+
+    <div id="audio_player"></div>
+
+    <script>
+      document.forms[0].addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const response = await fetch("/generate", {
+          method: "POST",
+          body: formData,
+        });
+        const filename = await response.text();
+        const audioPlayer = document.getElementById("audio_player");
+        audioPlayer.innerHTML = `<audio controls src="/audio/${filename}"></audio>`;
+      });
+    </script>
+  </body>
+</html>

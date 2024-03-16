@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Flask
+*.pyc
+*.pyo
+__pycache__/
+instance/
+
+# Visual Studio Code
+.vscode/
+
